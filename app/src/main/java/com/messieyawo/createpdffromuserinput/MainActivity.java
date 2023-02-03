@@ -15,6 +15,7 @@ import androidx.core.app.ActivityCompat;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Text;
 
@@ -61,19 +62,15 @@ Button submitButton;
 
        PdfDocument pdfDocument = new PdfDocument(writer);
        Document document = new Document(pdfDocument);
-        Paragraph paragraph = new Paragraph("Hello Mawuli");
-        Text text1 = new Text("Bold ").setBold();
-        Text text2 = new Text("Italic ").setItalic();
-        Text text3 =  new Text("Underline ").setUnderline();
-
-        Paragraph paragraph1 = new Paragraph();
-        paragraph1.add(text1)
-                        .add(text2)
-                        .add(text3);
+        List list = new List();
+        list.add("Android");
+        list.add("Java");
+        list.add("C++");
+        list.add("Kotlin");
 
 
-        document.add(paragraph);
-        document.add(paragraph1);
+
+        document.add(list);
         document.close();
         Toast.makeText(this,"Pdf Created",Toast.LENGTH_LONG).show();
 
