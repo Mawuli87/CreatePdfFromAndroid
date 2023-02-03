@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/editTextName"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:layout_height="48dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/editTextAge"
+        android:ems="10"
+        android:hint="Age"
+        android:inputType="number"
+        android:layout_height="48dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/editTextNumber"
+        android:ems="10"
+        android:hint="Number"
+        android:inputType="number"
+        android:layout_height="48dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:id="@+id/editTextLocation"
+        android:ems="10"
+        android:hint="Location"
+        android:inputType="textPersonName"
+        android:layout_height="48dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/btnSubmit"
+        android:layout_margin="12dp"
+        android:textAllCaps="false"
+        android:text="Submit"/>
+
+
+</LinearLayout>
