@@ -42,18 +42,30 @@ Button submitButton;
 
         ActivityCompat.requestPermissions(this,new String[]{
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                android.Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
+                android.Manifest.permission.READ_EXTERNAL_STORAGE},
+                PackageManager.PERMISSION_GRANTED);
 
-         try {
-             createPDF();
-         }catch (FileNotFoundException e){
-             e.printStackTrace();
-         }
 
+
+         submitButton.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 try {
+                     createPDF();
+                 }catch (FileNotFoundException e){
+                     e.printStackTrace();
+                 }
+             }
+         });
 
     }
 
     private void createPDF() throws FileNotFoundException{
+        String name = editTextName.getText().toString();
+        String age = editTextAge.getText().toString();
+        String number = editTextNumber.getText().toString();
+        String location = editTextLocation.getText().toString();
+
         String pdfPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
         File file = new File(pdfPath,"myPDF.pdf");
         OutputStream outputStream = new FileOutputStream(file);
@@ -62,15 +74,20 @@ Button submitButton;
 
        PdfDocument pdfDocument = new PdfDocument(writer);
        Document document = new Document(pdfDocument);
-        List list = new List();
-        list.add("Android");
-        list.add("Java");
-        list.add("C++");
-        list.add("Kotlin");
+       Text text = new Text(name).setBold();
+       Text text1 = new Text(age).setItalic();
+       Text text2 = new Text(number).setUnderline();
+       Text text3 = new Text(number).setTextRise(25f);
+       Paragraph paragraph = new Paragraph();
+       paragraph.add(text)
+                       .add(text)
+                       .add(text1)
+                       .add(text2)
+                       .add(text3);
 
 
 
-        document.add(list);
+        document.add(paragraph);
         document.close();
         Toast.makeText(this,"Pdf Created",Toast.LENGTH_LONG).show();
 
